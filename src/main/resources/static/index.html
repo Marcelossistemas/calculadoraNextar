@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculador_Nextar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #333;
+            color: #fff;
+        }
+        .icon {
+            font-size: 4em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calculador_Nextar</h1>
+    </header>
+    <div class="container">
+        <div class="content">
+            <div class="icon">
+                <i class="fas fa-calculator"></i>
+            </div>
+            <h2>Bem-vindo ao Calculador_Nextar!</h2>
+            <p>Esta é uma aplicação Spring Boot que fornece uma API REST para avaliar expressões matemáticas.</p>
+            <p>Você pode utilizar os seguintes endpoints:</p>
+            <ul>
+                <li><strong>POST /api/evaliar</strong>: Avaliar uma expressão matemática.</li>
+                <li><strong>GET /api/expressao</strong>: Listar todas as expressões avaliadas.</li>
+            </ul>
+            <p>A documentação completa da API está disponível em <a href="/swagger-ui.html">/swagger-ui.html</a></p>
+        </div>
+    </div>
+    <footer>
+        <p>Feito com ❤️ por Marcelo da Silva</p>
+    </footer>
+</body>
+</html>
