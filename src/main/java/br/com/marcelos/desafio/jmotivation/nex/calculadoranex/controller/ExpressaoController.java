@@ -3,6 +3,7 @@ package br.com.marcelos.desafio.jmotivation.nex.calculadoranex.controller;
 
 import br.com.marcelos.desafio.jmotivation.nex.calculadoranex.dto.ExpressaoDTO;
 import br.com.marcelos.desafio.jmotivation.nex.calculadoranex.model.Expressao;
+import br.com.marcelos.desafio.jmotivation.nex.calculadoranex.services.CalculoExpressaoService;
 import br.com.marcelos.desafio.jmotivation.nex.calculadoranex.services.ExpressaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,9 @@ public class ExpressaoController {
 
     @Autowired
     private ExpressaoService expressaoService;
+    
+    @Autowired
+    private CalculoExpressaoService calculoExpressaoService;
 
     @GetMapping
     public List<Expressao> getAllExpressoes() {
@@ -58,6 +62,35 @@ public class ExpressaoController {
         }
     }
 
+    @PostMapping("/calculonovo")
+    public ResponseEntity<Expressao> createExpressaoN(@RequestBody ExpressaoDTO expressaoDTO) {
+        try {
+            // Verificar se a expressão já existe no banco de dados
+            Optional<Expressao> existingExpressao = expressaoService.findByExpressao(expressaoDTO.getExpressao());
+            if (existingExpressao.isPresent()) {
+                // Se a expressão já existe, retorne o valor existente
+                return ResponseEntity.ok(existingExpressao.get());
+            }
+
+            // Criar uma nova instância de Expressao a partir do DTO
+            Expressao expressao = new Expressao();
+            expressao.setExpressao(expressaoDTO.getExpressao());
+
+            // Calcular o resultado da expressão
+            expressao.setResultado(calculoExpressaoService.resultado(expressao.getExpressao()).toString());
+
+            // Salvar a expressão com o resultado calculado
+            Expressao savedExpressao = expressaoService.save(expressao);
+
+            // Retornar a expressão salva
+            return ResponseEntity.ok(savedExpressao);
+        } catch (Exception e) {
+            // Retornar um bad request se houver erro no cálculo da expressão
+            return ResponseEntity.badRequest().build();
+        }
+    }
+    
+    
     @PutMapping("/{id}")
     public ResponseEntity<Expressao> updateExpressao(@PathVariable Long id, @RequestBody Expressao expressaoDetails) {
         Optional<Expressao> optionalExpressao = expressaoService.findById(id);
