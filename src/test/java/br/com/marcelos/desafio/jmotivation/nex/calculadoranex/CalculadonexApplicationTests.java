@@ -1,6 +1,5 @@
-package br.com.marcelos.desafio.jmotivation.nex.calculadonex;
+package br.com.marcelos.desafio.jmotivation.nex.calculadoranex;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest

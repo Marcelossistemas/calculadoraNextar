@@ -29,6 +29,7 @@ public class CalculoExpressaoService implements CalculoExpressaoInterface {
 			System.out.println(resultado);
 		}
 
+		
 		ll.set(posicao - 1, "" + resultado);
 		if ((posicao + 2) < ll.size()) {
 			ll.set(posicao, ll.get(posicao + 2));
@@ -69,7 +70,7 @@ public class CalculoExpressaoService implements CalculoExpressaoInterface {
 	 * Este método utiliza de recursividade para efetuar o calculo da expressão
 	 */
 	@Override
-	public List<String> resultado(String expressao) {
+	public String resultado(String expressao) {
 		List<String> listaexpressao = new ArrayList<String>();
 		StringTokenizer strToken = new StringTokenizer(this.formatarExpressao(expressao.trim()));
 
@@ -85,13 +86,13 @@ public class CalculoExpressaoService implements CalculoExpressaoInterface {
 		}
 
 		if (listaexpressao.size() == 1) {
-			return listaexpressao;
+			return listaexpressao.toString();
 		} else {
 			String express = String.join(", ", listaexpressao);
 			express = express.replaceAll(",", " ");
-			System.out.println(express);
+			System.out.println(express.toString());
 
-			return resultado(express);
+			return resultado(express.toString());
 		}
 	}
 
@@ -114,4 +115,5 @@ public class CalculoExpressaoService implements CalculoExpressaoInterface {
         return formatacao.trim();
 	}
 
+	
 }

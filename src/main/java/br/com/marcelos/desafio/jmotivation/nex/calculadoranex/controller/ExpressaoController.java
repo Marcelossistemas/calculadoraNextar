@@ -28,6 +28,12 @@ public class ExpressaoController {
         return expressaoService.findAll();
     }
 
+    @GetMapping("/ola")
+    public String retornarOla() {
+    	return "Ola";
+    }
+    
+    
     @GetMapping("/{id}")
     public ResponseEntity<Expressao> getExpressaoById(@PathVariable Long id) {
         Optional<Expressao> expressao = expressaoService.findById(id);

@@ -12,7 +12,7 @@ public interface CalculoExpressaoInterface {
 
 	public List<String> calculaSinalMD(int posicao, List<String> ll);
 	public List<String> calculaSinalSS(int posicao, List<String> ll);
-	public List<String> resultado (String expressao);
+	public String resultado (String expressao);
 	public int verificaSinais(List<String> expressao);
 	public String formatarExpressao(String expressao);
 	
